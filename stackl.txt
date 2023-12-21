@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *next;
+};
+struct node *top=NULL;
+void push(int);
+void pop();
+void display();
+void main()
+{
+int x,ch;
+while(1){
+printf("Enter a option");
+printf("\n1.PUSH\n2.POP\n3.Display\nExit");
+scanf("%d"&ch);
+swtich(ch){
+ case 1: printf("\nEnter the value);
+         scanf("%d",&x);
+         push(x);
+         break;
+ case 2:pop();
+        break;
+ case 3:display();
+        break;
+ case 4:exit(0)
+        break;
+ default:printf("Invalid character");
+}}
+}
+void push(int x){
+struct node *p;
+p=(struct node*)malloc(sizeof(struct node));
+if(p==NULL)
+{
+printf("Stack Overflow");
+}
+else{
+p->data=x;
+p->next=top;
+top=p;}
+}
+void pop(){
+int x;
+struct node *p;
+if(top==NULL)
+{
+printf("Stack Underflow");
+}
+else{
+p=top;
+x=p->data;
+top=top->next;
+free(p);}
+}
+void display()
+{
+struct node *ptr;
+if(top==NULL){
+printf("Stack is empty");}
+else{
+printf("Stack elements are:");
+for(ptr=top;ptr!=NULL;ptr=ptr->next){
+printf("%d->",ptr->data);}
+printf("NULL");
+}
+}
